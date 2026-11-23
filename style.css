@@ -1,0 +1,261 @@
+:root {
+  --navy: #0b1b33;
+  --card: #12294a;
+  --text: #e6eefb;
+  --teal: #2dd4bf;
+  --ink: #14233b;
+  --paper: #f4f7fb;
+}
+* { box-sizing: border-box; margin: 0; }
+body {
+  font-family: "Noto Sans Armenian", Arial, sans-serif;
+  line-height: 1.7;
+  background: var(--navy);
+  color: var(--text);
+}
+:focus-visible { outline: 3px solid var(--teal); outline-offset: 3px; }
+
+/* ===== Главная страница ===== */
+.hero {
+  min-height: 60vh;
+  display: grid;
+  place-content: center;
+  text-align: center;
+  padding: 2rem 1.5rem;
+}
+.welcome { color: var(--teal); font-size: 1.3rem; }
+.hero h1 { font-size: clamp(2.2rem, 7vw, 4.5rem); font-weight: 800; line-height: 1.2; }
+.lead { max-width: 55ch; margin: 1rem auto 0; opacity: .85; }
+
+.topics { max-width: 960px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+.topics h2 { margin-bottom: 1.5rem; }
+.grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 1.5rem;
+}
+
+.grid .card {
+  grid-column: span 2;
+}
+
+/* Центрирование двух последних карточек */
+.grid .card:nth-child(4) {
+  grid-column: 2 / span 2;
+}
+
+.grid .card:nth-child(5) {
+  grid-column: 4 / span 2;
+}
+
+/* Адаптация для телефонов */
+@media (max-width: 650px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .grid .card {
+    grid-column: span 1;
+  }
+
+  .grid .card:last-child {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 400px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .grid .card {
+    grid-column: 1;
+  }
+}
+.card {
+  display: block;
+  padding: 1.5rem;
+  background: var(--card);
+  border-top: 5px solid var(--c);
+  border-radius: 10px;
+  text-decoration: none;
+  transition: transform .2s;
+}
+.card:hover, .card:focus-visible { transform: scale(1.06); } /* увеличение при наведении */
+.card h3 { color: var(--c); font-size: 1.5rem; }
+.note { margin-top: 2.5rem; opacity: .8; max-width: 70ch; }
+
+/* ===== Страницы тем (светлые) ===== */
+body.page { background: var(--paper); color: var(--ink); }
+.back {
+  position: fixed; top: 1rem; left: 1rem;
+  width: 3rem; height: 3rem;
+  display: grid; place-items: center;
+  background: var(--navy); color: #fff;
+  border-radius: 50%;
+  font-size: 1.5rem; text-decoration: none;
+}
+.article { max-width: 70ch; margin: 0 auto; padding: 5rem 1.5rem 4rem; }
+.article h1 { color: var(--c); font-size: 2.5rem; margin-bottom: 1rem; }
+.article h2 { margin: 2rem 0 .5rem; }
+.article ul { padding-left: 1.3rem; }
+
+/* учебный пример фишинга */
+.demo { margin-top: 1rem; padding: 1.5rem; background: #fff; border: 2px dashed var(--c); border-radius: 10px; }
+.demo .label { font-size: .9rem; opacity: .7; margin-bottom: .5rem; }
+.demo input { display: block; width: 100%; margin: .6rem 0; padding: .6rem; font: inherit; }
+.demo button { padding: .6rem 1.2rem; font: inherit; font-weight: 700; background: var(--c); border: 0; border-radius: 6px; cursor: pointer; }
+.warning { margin-top: 1rem; padding: 1rem; background: #fee2e2; border-left: 5px solid #dc2626; }
+
+@media (prefers-reduced-motion: reduce) {
+  .card { transition: none; }
+}
+
+/* карточки на светлых страницах */
+.article .grid { margin-top: 1.5rem; }
+.article .card { color: var(--text); }
+.article .card p { color: var(--text); margin: 0; }
+
+/* блоки с примерами вирусов */
+.example { margin: 1rem 0; padding: .1rem 1rem 1rem; background: #fff; border-left: 5px solid var(--c); border-radius: 6px; }
+.example h3 { margin-top: 1rem; color: var(--c); }
+
+.card h3 {
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+/* ===== Страница кибербезопасности ===== */
+
+.security-section {
+  margin-top: 2rem;
+}
+
+.security-section h2 {
+  color: var(--c);
+  margin: 2rem 0 .7rem;
+}
+
+.security-section p {
+  margin-bottom: 1rem;
+}
+
+.security-list {
+  padding-left: 1.5rem;
+  margin: 1rem 0;
+}
+
+.security-list li {
+  margin-bottom: .6rem;
+}
+
+.security-card {
+  display: block;
+  padding: 1.5rem;
+  margin: 1rem 0;
+  background: #fff;
+  border-left: 5px solid var(--c);
+  border-radius: 8px;
+}
+
+.security-card h3 {
+  color: var(--c);
+  margin-bottom: .5rem;
+}
+
+.security-card p {
+  margin: 0;
+}
+
+.security-warning {
+  margin: 1.5rem 0;
+  padding: 1rem;
+  background: #fee2e2;
+  border-left: 5px solid #dc2626;
+  border-radius: 6px;
+  color: #7f1d1d;
+}
+
+/* ===== Страница кибермошенничества ===== */
+
+.fraud-section {
+  margin-top: 2rem;
+}
+
+.fraud-section h2 {
+  color: var(--c);
+  margin: 2rem 0 .7rem;
+}
+
+.fraud-section p {
+  margin-bottom: 1rem;
+}
+
+.fraud-list {
+  padding-left: 1.5rem;
+  margin: 1rem 0;
+}
+
+.fraud-list li {
+  margin-bottom: .7rem;
+}
+
+.fraud-card {
+  margin: 1.2rem 0;
+  padding: 1.2rem 1.5rem;
+  background: #fff;
+  border-left: 5px solid var(--c);
+  border-radius: 8px;
+}
+
+.fraud-card h3 {
+  color: var(--c);
+  margin: .5rem 0;
+}
+
+.fraud-card p {
+  margin-bottom: .5rem;
+}
+
+.fraud-warning {
+  margin: 1.5rem 0;
+  padding: 1.2rem;
+  background: #fee2e2;
+  border-left: 5px solid #dc2626;
+  border-radius: 8px;
+  color: #7f1d1d;
+}
+
+.fraud-info {
+  margin: 1.5rem 0;
+  padding: 1.2rem;
+  background: #ccfbf1;
+  border-left: 5px solid #0d9488;
+  border-radius: 8px;
+  color: #134e4a;
+}
+
+.fraud-card h3,
+.fraud-section h2 {
+  overflow-wrap: break-word;
+}
+
+.grid .card {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.grid .card h3 {
+  word-break: normal;
+  overflow-wrap: break-word;
+  white-space: normal;
+}
+
+.grid .card p {
+  word-break: normal;
+  overflow-wrap: break-word;
+  white-space: normal;
+}
+.body {
+  background: wp8530192.jpg
+}
